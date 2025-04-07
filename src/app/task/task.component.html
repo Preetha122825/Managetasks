@@ -4,14 +4,14 @@
     
         <h4 >Manage Tasks</h4><span class="task"><a href="#" >Home</a>/Manage Tasks </span>
         </div>
-<div class="container1" >
+<div class="container1 " >
     
     <div class="h5 pb-2 mb-4  border-bottom ">
         Manage Tasks
     </div>
-    <div class="m-1 align-items-center">
-    <table class="table table-bordered ">
-        <thead>
+    <div class="table-responsive m-1 align-items-center">
+    <table class="table table-bordered " id="taskTable">
+        <thead class="table-light">
             <tr>
                 <th>SN</th>
                 <th>Name</th>
@@ -24,12 +24,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr><td>1</td><td>Aravind</td><td>Login form</td><td>Sample login form using html and css</td><td>Jan.1,2025,midnight</td><td>Jan.30,2025,midnight</td><td><button class="btn btn-primary btn-sm me-2">Edit</button><button class="btn btn-danger btn-sm">Delete</button></td></tr>
-            <tr><td>2</td><td>Arun</td><td>Shipment details form</td><td>Sample shipment details form using html and css</td><td>Jan.1,2025,midnight</td><td>Jan.30,2025,midnight</td><td><button class="btn btn-primary btn-sm me-2">Edit</button><button class="btn btn-danger btn-sm">Delete</button></td></tr>
-            <tr><td>3</td><td>Anu</td><td>Login form</td><td>Sample login form using html and css</td><td>Jan.1,2025,midnight</td><td>Jan.30,2025,midnight</td><td><button class="btn btn-primary btn-sm me-2" >Edit</button><button class="btn btn-danger btn-sm">Delete</button></td></tr>
-            <tr><td>4</td><td>Anish   </td><td>Shipment details form</td><td>Sample shipment details form using html and css</td><td>Jan.1,2025,midnight</td><td>Jan.30,2025,midnight</td><td><button class="btn btn-primary btn-sm me-2">Edit</button><button class="btn btn-danger btn-sm">Delete</button></td></tr>
-            <tr><td>5</td><td>Madhu</td><td>Login form</td><td>Sample login form using html and css</td><td>Jan.1,2025,midnight</td><td>Jan.30,2025,midnight</td><td><button class="btn btn-primary btn-sm me-2">Edit</button><button class="btn btn-danger btn-sm">Delete</button></td></tr>
-            
+            <tr *ngFor="let task of tasks; let i = index">
+                <td>{{ task.sn }}</td>
+                <td>{{ task.name }}</td>
+                <td>{{ task.title }}</td>
+                <td>{{ task.desc }}</td>
+                <td>{{ task.start }}</td>
+                <td>{{ task.end }}</td>
+                <td>
+                  <button class="btn btn-primary btn-sm me-2">Edit</button>
+                  <button class="btn btn-danger btn-sm delete-btn" (click)="deleteTask(i)">Delete</button>
+                </td>
+              </tr>
         </tbody>
     </table>
     </div>
